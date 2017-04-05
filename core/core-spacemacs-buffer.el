@@ -129,46 +129,8 @@ Cate special text banner can de reachable via `998', `cat' or `random*'.
   (cond
    (spacemacs-buffer--fresh-install
     ;; we assume the user is  new to spacemacs and open the quickhelp
-    (spacemacs-buffer/toggle-note 'quickhelp)
-    (setq spacemacs-buffer--release-note-version spacemacs-version)
-    (spacemacs/dump-vars-to-file '(spacemacs-buffer--release-note-version)
-                                 spacemacs-buffer--cache-file))
-   ((or (not spacemacs-buffer--release-note-version)
-        (version< spacemacs-buffer--release-note-version
-                  spacemacs-version))
-    ;; check the variable spacemacs-buffer--release-note-version
-    ;; to decide whether we show the release note
-    (spacemacs-buffer/toggle-note 'release-note)))
+    (spacemacs-buffer/toggle-note 'quickhelp)))
   (spacemacs//redisplay))
-
-;; TODO: delete function
-(defun spacemacs-buffer//choose-banner ()
-  "Return the full path of a banner based on the dotfile value."
-  (when dotspacemacs-startup-banner
-    (cond ((eq 'official dotspacemacs-startup-banner)
-           (if (and (display-graphic-p) (image-type-available-p 'png))
-               spacemacs-banner-official-png
-             (spacemacs-buffer//get-banner-path 1)))
-          ((eq 'random dotspacemacs-startup-banner)
-           (spacemacs-buffer//choose-random-text-banner))
-          ((eq 'random* dotspacemacs-startup-banner)
-           (spacemacs-buffer//choose-random-text-banner t))
-          ((eq 'doge dotspacemacs-startup-banner)
-           (spacemacs-buffer//get-banner-path 999))
-          ((eq 'cat dotspacemacs-startup-banner)
-           (spacemacs-buffer//get-banner-path 998))
-          ((integerp dotspacemacs-startup-banner)
-           (spacemacs-buffer//get-banner-path dotspacemacs-startup-banner))
-          ((and dotspacemacs-startup-banner
-                (image-type-available-p (intern (file-name-extension
-                                                 dotspacemacs-startup-banner)))
-                (display-graphic-p))
-           (if (file-exists-p dotspacemacs-startup-banner)
-               dotspacemacs-startup-banner
-             (spacemacs-buffer/warning (format "could not find banner %s"
-                                               dotspacemacs-startup-banner))
-             (spacemacs-buffer//get-banner-path 1)))
-          (t (spacemacs-buffer//get-banner-path 1)))))
 
 (defvar spacemacs-buffer--random-banner nil
   "The random banner chosen.")
