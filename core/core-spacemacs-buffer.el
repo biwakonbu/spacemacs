@@ -118,17 +118,9 @@ Easter egg:
 Doge special text banner can be reachable via `999', `doge' or `random*'.
 Cate special text banner can de reachable via `998', `cat' or `random*'.
 `random' ignore special banners whereas `random*' does not."
-  (let ((banner (spacemacs-buffer//choose-banner))
-        (buffer-read-only nil))
-    (progn
-      (when banner
-        (spacemacs-buffer/message (format "Banner: %s" banner))
-        (if (image-type-available-p (intern (file-name-extension banner)))
-            (spacemacs-buffer//insert-image-banner banner)
-          (spacemacs-buffer//insert-ascii-banner-centered banner))
-        (spacemacs-buffer//inject-version))
-      (spacemacs-buffer//insert-buttons)
-      (spacemacs//redisplay))))
+  (progn
+    (spacemacs-buffer//insert-buttons)
+    (spacemacs//redisplay)))
 
 (defun spacemacs-buffer/display-startup-note ()
   "Decide of the startup note and display it if relevant."
@@ -149,6 +141,7 @@ Cate special text banner can de reachable via `998', `cat' or `random*'.
     (spacemacs-buffer/toggle-note 'release-note)))
   (spacemacs//redisplay))
 
+;; TODO: delete function
 (defun spacemacs-buffer//choose-banner ()
   "Return the full path of a banner based on the dotfile value."
   (when dotspacemacs-startup-banner
