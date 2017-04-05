@@ -22,25 +22,6 @@
 (defconst spacemacs-core-directory
   (expand-file-name (concat spacemacs-start-directory "core/"))
   "Spacemacs core directory.")
-(defconst spacemacs-info-directory
-  (expand-file-name (concat spacemacs-core-directory "info/"))
-  "Spacemacs info files directory")
-(defconst spacemacs-release-notes-directory
-  (expand-file-name (concat spacemacs-info-directory "release-notes/"))
-  "Spacemacs release notes directory")
-(defconst spacemacs-banner-directory
-  (expand-file-name (concat spacemacs-core-directory "banners/"))
-  "Spacemacs banners directory.")
-(defconst spacemacs-banner-official-png
-  (expand-file-name (concat spacemacs-banner-directory "img/spacemacs.png"))
-  "Spacemacs official banner image.")
-(defconst spacemacs-badge-official-png
-  (expand-file-name (concat spacemacs-banner-directory
-                            "img/spacemacs-badge.png"))
-  "Spacemacs official badge image.")
-(defconst spacemacs-purple-heart-png
-  (expand-file-name (concat spacemacs-banner-directory "img/heart.png"))
-  "Purple heart emoji.")
 (defconst spacemacs-cache-directory
   (expand-file-name (concat user-emacs-directory ".cache/"))
   "Spacemacs storage area for persistent files")
@@ -50,12 +31,6 @@
 (defconst spacemacs-docs-directory
   (expand-file-name (concat spacemacs-start-directory "doc/"))
   "Spacemacs documentation directory.")
-(defconst spacemacs-news-directory
-  (expand-file-name (concat spacemacs-start-directory "news/"))
-  "Spacemacs News directory.")
-(defconst spacemacs-assets-directory
-  (expand-file-name (concat spacemacs-start-directory "assets/"))
-  "Spacemacs assets directory.")
 (defconst spacemacs-test-directory
   (expand-file-name (concat spacemacs-start-directory "tests/"))
   "Spacemacs tests directory.")
